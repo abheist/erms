@@ -1,0 +1,64 @@
+*	{
+	margin: 0px;
+	padding: 0px;
+}
+
+body	{
+	background: #fafafa;
+}
+
+a	{
+	text-decoration: none;
+	color: rgba(0,0,0,0.5);
+}
+
+a:hover	{
+	text-decoration: none;
+	color: rgba(0,0,0,0.6);
+}
+
+#heading	{
+	width: 100%;
+	margin: 0px;
+	margin-bottom: 100px;
+	color: rgba(0,0,0,0.5);
+	background: #F5F5F5;
+	line-height: 90px;
+	font-size: 40px;
+	font-family: sans-serif;
+	font-weight: bolder;
+	padding-left: 100px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+#spanning	{
+	font-size: 20px;
+	float: right;
+	margin-right: 150px;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+lala	{
+	color: rgba(0,0,0,0.5);
+	cursor: pointer;
+	background: rgba(0,0,0,0.2);
+	padding: 5px 10px 5px 10px;
+	text-align: center;
+	border-radius: 50px;
+}
+
+lala:hover	{
+	color: white;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
+
+#asd	{
+	width: 100%;
+	color: white;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }

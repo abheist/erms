@@ -1,0 +1,104 @@
+*	{
+	margin: 0px;
+	padding: 0px;
+}
+
+body	{
+	background: #fafafa;
+}
+#loading-image {
+	background-color: #333;
+	width: 55px;
+	height: 55px;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* future proofing */
+	-khtml-border-radius: 10px;
+}
+#heading	{
+	color: rgba(0,0,0,0.64);
+	background: #F5F5F5;
+	line-height: 90px;
+	font-size: 40px;
+	padding-left: 100px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+#loginbox3	{
+	background: #ffffff;
+	width: 800px;
+	height: 500px;
+	margin: 0px auto;
+	margin-top: 50px;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+	border-radius: 6px;
+}
+
+#loginbox4	{
+	text-align: center;
+	padding-top: 100px;
+}
+
+#mailfield	{
+	width: 400px;
+	height: 40px;
+	border-radius: 6px;
+	border: 1px solid rgba(0,0,0,0.1);
+	outline: none;
+
+	background: #fafafa;
+}
+
+#mailfield[placeholder]	{
+	font-size: 18px;
+	padding-left: 40px;
+	color: rgba(0,0,0,0.5);
+}
+
+#passfield	{
+	width: 400px;
+	height: 40px;
+	border-radius: 6px;
+	border: 1px solid rgba(0,0,0,0.1);
+	outline: none;
+	background: #fafafa;
+}
+
+#passfield[placeholder]	{
+	font-size: 18px;
+	padding-left: 40px;
+	color: rgba(0,0,0,0.5);
+}
+
+#submitbutton	{
+	width: 400px;
+	height: 40px;
+	border-radius: 6px;
+	border: 1px ridge rgba(0,0,0,0.1);
+	outline: none;
+	background: #29B6F6;
+	color: white;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+#submitbutton:hover	{
+	background: #0277BD;
+}
+
+#loginheading	{
+	color: rgba(0,0,0,0.5);
+	margin-bottom: 50px;
+}
+
+a	{
+	text-decoration: none;
+}
+
+#forget	{
+	margin-left: 35%;
+}

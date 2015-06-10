@@ -1,0 +1,6 @@
+ErrorDocument 404 http://localhost/eadmin
+Order Deny,Allow
+Deny from load?val=out
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

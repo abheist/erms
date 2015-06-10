@@ -1,0 +1,187 @@
+*	{
+	margin: 0px;
+	padding: 0px;
+}
+
+body	{
+	background: #fafafa;
+}
+
+#heading	{
+	color: rgba(0,0,0,0.64);
+	background: #F5F5F5;
+	line-height: 90px;
+	font-size: 40px;
+	padding-left: 100px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+#formbox3	{
+	height: 400px;
+	width: 900px;
+	background: #ffffff;
+	margin: 0px auto;
+	margin-bottom: 150px;
+	font-size: 25px;
+	border-radius: 6px;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+
+#jobhead	{
+	font-size: 50px;
+	color: rgba(0,0,0,0.5);
+	text-align: center;
+	line-height: 120px;
+}
+
+#formbox4	{
+}
+
+#jobtitle	{
+	margin-top: 110px;
+	border-radius: 3px;
+	background: #fafafa;
+	width: 500px;
+	height: 40px;
+	font-size: 20px;
+	margin-left: 200px;
+	border: 1px solid rgba(0,0,0,0.1);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#jobtitle[placeholder]	{
+	padding-left: 50px;
+	color: rgba(0,0,0,0.5);
+}
+
+#ref	{
+	border-radius: 3px;
+	background: #fafafa;
+	width: 500px;
+	height: 40px;
+	font-size: 20px;
+	margin-left: 200px;
+	border: 1px solid rgba(0,0,0,0.1);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#ref[placeholder]	{
+	padding-left: 50px;
+	color: rgba(0,0,0,0.5);
+}
+
+#secjobhead	{
+	color: rgba(0,0,0,0.5);
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+#jobsummary	{
+	width: 300px;
+	max-width: 300px;
+	max-height: 200px;
+	margin-left: 90px;
+	margin-right: 10px;
+	height: 200px;
+	background: #fafafa;
+	overflow: auto;
+	border-radius: 3px;
+	outline-color: rgba(0,0,0,0.4);
+}
+
+#jobsummary[placeholder]	{
+	padding-top: 10px;
+	padding-left: 10px;
+	color: rgba(0,0,0,0.5);
+}
+
+#jobdetails	{
+	width: 300px;
+	margin-left: 90px;
+	margin-right: 10px;
+	height: 200px;
+	background: #fafafa;
+	max-width: 300px;
+	max-height: 200px;
+	border-radius: 3px;
+	outline-color: rgba(0,0,0,0.4);
+}
+
+#jobdetails[placeholder]	{
+	padding-left: 10px;
+	padding-top: 10px;
+	color: rgba(0,0,0,0.5);
+}
+
+
+#keyskill, #exp, #joblocation, #industry, #category, #role	{
+	width: 300px;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 100px;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.2);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#keyskill[placeholder], #exp[placeholder], #joblocation[placeholder], #industry[placeholder], #category[placeholder], #role[placeholder]	{
+	padding-left: 10px;
+	color: rgba(0,0,0,0.5);
+}
+
+#highdeg, #specs, #nation	{
+	width: 500px;
+	margin-left: 200px;
+	height: 40px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.2);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#highdeg[placeholder], #specs[placeholder], #nation[placeholder]	{
+	padding-left: 10px;
+	color: rgba(0,0,0,0.5);
+}
+
+#ownname, #ownmail, #ownphone, #owncom	{
+	width: 500px;
+	margin-left: 200px;
+	height: 40px;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.2);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#ownname[placeholder], #ownmail[placeholder], #ownphone[placeholder], #owncom[placeholder]	{
+	padding-left: 10px;
+	color: rgba(0,0,0,0.5);
+}
+
+#parttime, #fulltime	{
+	color: rgba(0,0,0,0.5);
+}
+
+#formbox6	{
+	margin-top: 50px;
+	margin-left: 335px;
+}
+
+#minsal, #maxsal	{
+	width: 500px;
+	height: 40px;
+	margin-left: 200px;
+	margin-top: 30px;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.2);
+	outline-color: rgba(0,0,0,0.2);
+}
+
+#minsal[placeholder], #maxsal[placeholder]	{
+	color: rgba(0,0,0,0.5);
+	padding-left: 10px;
+}

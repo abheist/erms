@@ -1,0 +1,32 @@
+*	{
+	margin: 0px;
+	padding: 0px;
+}
+
+table	{
+	margin: 0px auto;
+	width: 75%; 
+	border-left: hidden;
+	border-right: hidden;
+	border-top: solid; 
+}
+
+tr	{
+	height: 30px;
+	background: #CFD8DC;
+}
+
+tr:hover	{
+	background: rgba(0,0,0,0.2);
+	color: white;
+}
+
+th	{
+	padding-left: 15px;
+	background: #607D8B;
+	color: white;
+}
+
+td	{
+	padding-left: 15px;
+}
