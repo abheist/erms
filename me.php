@@ -2,6 +2,7 @@
 $reqlogin=true;
 $css="era";
 require_once ('header.php');
+$_SESSION['active']=false;
 ?>	
 	<div id="post1">
 		<div id="post2">
@@ -78,6 +79,18 @@ if($_SESSION['user_right']==0)
 			<div id="post3">
 				<div id="post4">
 					<h3 id="posthead2">Add Recruit</h3>
+				</div>
+			</div>
+			</a>
+		</div>
+	</div>
+
+	<div id="post1">
+		<div id="post2">
+			<a href="addfield_cand">
+			<div id="post3">
+				<div id="post4">
+					<h3 id="posthead2">Add Candidate Form Field</h3>
 				</div>
 			</div>
 			</a>

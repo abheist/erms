@@ -25,6 +25,12 @@ if(isset($_GET['id']))
 		$reqlogin=true;
 		require_once 'header.php';
 		$recid=substr($_GET['id'],-1,1);
+		require_once 'db/connectvars.php';
+		$dbc=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME) or die('Error in connection');
+		$query="select user_name from user_details where user_id=$recid";
+		$result=mysqli_query($dbc, $query) or die($query);
+		if(mysqli_num_rows($result)!=1)
+			header('Location:.');
 		echo '<div id="deldiv"><h1 id="delname">Are you sure to want to delete this recruiter?</h1>';
 		echo '<form method="post" action="del_recruit">';
 		echo '<input type="hidden" name="recid" value="'.$recid.'"/>';

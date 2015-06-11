@@ -10,6 +10,14 @@ require_once('db/connectvars.php');
 $dbc=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME) or die('Error in connection');
 $error="";
 $form=true;
+$query="select field_title,field_name from candi_field_title";
+$result=mysqli_query($dbc, $query) or die('Error in setting up');
+if(mysqli_num_rows($result)>0)
+{
+	$user_fields=array();
+	while($row=mysqli_fetch_array($result, MYSQL_ASSOC))
+		array_push($user_fields, $row);
+}
 if(isset($_POST['submit']))
 {
 	$form=false;
@@ -169,14 +177,19 @@ if($form)
 					<div style="clear:both;height:20px;"></div>
 					<input type="checkbox" name="qualif" value="-1"/> Add one (If not listed)
 					<input type="text" name="addqualif" class="inputv" placeholder="Add Qualification" readonly="readonly" onclick="add_qual()" <?php if(isset($add_qualif)) echo "value=$add_qualif";?>/>
-					<input type="submit" name="submit" class="inputv" id="submitbutton" value="Add Candidate">
-				</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
 <?php
+					if(isset($user_fields))
+					{
+						foreach($user_fields as $ufield)
+							echo '<input type="text" class="inputv" placeholder="'.$ufield['field_title'].'" name="'.substr($ufield['field_title'],0,4).'"/>';
+					}
+					echo '<input type="submit" name="submit" class="inputv" id="submitbutton" value="Add Candidate">';
+				echo '</form>';
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
+	echo '</div>';
+echo '</body>';
+echo '</html>';
 }
 ?>

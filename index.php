@@ -48,7 +48,7 @@
 						<input type="password" name="password" id="passfield" placeholder="Password"><br><br>
 						<input type="submit" name="submit" id="submitbutton"><br><br>
 					</form>
-					<a href="#" id="forget">Forget Password</a>
+					<a href="forget" id="forget">Forget Password</a>
 				</div>
 			</div>
 		</div>
