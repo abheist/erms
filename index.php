@@ -17,7 +17,12 @@
 			$_SESSION['user_id']=$row['user_id'];
 			$_SESSION['user_name']=$row['user_name'];
 			$_SESSION['user_right']=$row['user_right'];
-			header('Location: me');
+			$query="delete from temp where actual_id=".$row['user_id'];
+			$result=mysqli_query($dbc, $query);
+			if($result)
+				header('Location: me');
+			else
+				$error="There is some error on server.";
 		}
 		else
 			$error="Incorrect credentials. Please login again.";

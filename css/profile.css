@@ -37,45 +37,17 @@ a	{
 	margin: 0px auto;
 }
 
-#secjobhead	{
+#secjobtitle {
 	color: rgba(0,0,0,0.5);
 	text-align: center;
-	font-size: 25px;
+	font-size: 35px;
 	padding-top: 60px;
-	padding-bottom: 40px;
+	padding-bottom: 30px;
 }
-
-.inputv	{
-	width: 100%;
-	height: 40px;
-	margin-top: 15px;
-	margin-bottom: 10px;
-	border-radius: 3px;
-	border: 1px solid rgba(0,0,0,0.2);
-	outline-color: rgba(0,0,0,0.2);
-}
-
-.inputv[placeholder]	{
-	color: rgba(0,0,0,0.5);
-	padding-left: 50px;
-}
-
-#submitbutton:hover	{
-	background: rgba(0,0,0,0.2);
-	color: white;
-	cursor: pointer;
-}
-
-#checkb	{
-	height: 15px;
-	float: left;
-}
-
-erms	{
-	float: left;
-	margin-right: 30px;
-}
-
-#ermsid	{
-	padding-left: 10px;
+#secjobhead	{
+	color: rgba(0,109,150,0.5);
+	text-align: center;
+	font-size: 25px;
+	padding-top: 40px;
+	padding-bottom: 10px;
 }

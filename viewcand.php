@@ -10,7 +10,7 @@
 	echo '</tr>';
   require_once('db/connectvars.php');
   $dbc=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME) or die('Error in connection');
-  $query="select name,contactno,ca_email from candidate_details order by";
+  $query="select SHA(candid_id) as cid,name,contactno,ca_email from candidate_details order by";
   if(isset($_GET['val']))
     if($_GET['val']==1)
       $query.=" name";
@@ -24,7 +24,7 @@
   if(mysqli_num_rows($result)>0)
     while($row=mysqli_fetch_array($result))
     {
-      echo '<tr><td><a href="profile?id=">'.$row['name'].'</a></td>';
+      echo '<tr><td><a href="profile?id='.$row['cid'].'">'.$row['name'].'</a></td>';
       echo '<td>'.$row['ca_email'].'</td>';
       echo '<td>'. $row['contactno'].'</td></tr>';
 		}

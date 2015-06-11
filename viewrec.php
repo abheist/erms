@@ -49,8 +49,15 @@
       echo '</td>';
       if($_SESSION['user_right']==0)
       {
-        $sendid=$row['enc_id'].$row['user_id'];
-        echo '<td><a href="del_recruit?id='.$sendid.'">Delete</a></td>';
+        if($row['user_id']!=$_SESSION['user_id'])
+        {
+          $code=$row['enc_id'];
+          echo '<td><a href="del_recruit?code='.$code.'">Delete</a></td>';
+        }
+        else
+        {
+         echo '<td>Request Admin to Delete</td>'; 
+        }
       }
       echo '</tr>';
     } // end of while
