@@ -37,6 +37,11 @@ if(isset($_POST['submit']))
 			$form=true;
 			$error="Please fill out all valid entries";
 	}
+	else if(!ctype_alpha($name))
+	{
+		$form=true;
+		$error="Name can not contain numeric characters";
+	}
 	else
 	{
 			if($ca_check==2 && (empty($cur_org) || empty($cur_ctc) || empty($not_period)))
