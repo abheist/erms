@@ -31,6 +31,7 @@ if(isset($_POST['submit']))
 	$cur_ctc=mysqli_real_escape_string($dbc,trim($_POST['cur_ctc']));
 	$exp_ctc=mysqli_real_escape_string($dbc,trim($_POST['exp_ctc']));
 	$not_period=mysqli_real_escape_string($dbc,trim($_POST['not_period']));
+	$not_period_dm=$_POST['not_period_dm'];
 	if(empty($name) || empty($contactno) || empty($ca_email) || empty($exp_ctc) || strlen($contactno)!=10)
 	{
 			$form=true;
@@ -94,14 +95,16 @@ if(isset($_POST['submit']))
 					$cur_org="Not Working";
 					$cur_ctc=0;
 					$not_period=0;
+					$not_period_dm=0;
 			}
 			else if($ca_check==0)
 			{
 				$cur_org="Fresher";
 				$cur_ctc=0;
 				$not_period=0;
+				$not_period_dm=0;
 			}
-			$query="insert into candidate_details(name,contactno,ca_email,cur_org,exp_ctc,exprnc,cur_ctc,not_period) values('$name',$contactno,'$ca_email','$cur_org',$exp_ctc,$exprnc,$cur_ctc,$not_period)";
+			$query="insert into candidate_details(name,contactno,ca_email,cur_org,exp_ctc,exprnc,cur_ctc,not_period,not_period_dm) values('$name',$contactno,'$ca_email','$cur_org',$exp_ctc,$exprnc,$cur_ctc,$not_period,not_period_dm)";
 			mysqli_query($dbc,$query) or die($query);
 			$query="select candid_id from candidate_details where ca_email='$ca_email'";
 			$result=mysqli_query($dbc,$query) or die('Error in querying');
@@ -157,7 +160,7 @@ if($form)
 					<input type="email" placeholder="E-Mail" class="inputv" name="ca_email" required <?php if(isset($ca_email)) echo "value=$ca_email";?>><br/>
 					<label>Current Status: <select name="org">
 						<option value="0">Fresher</option>
-						<option value="1">Not Working</option>
+						<option value="1">Currently Not Working</option>
 						<option value="2">Working </option>
 					</select></label>
 					<input type="text" name="cur_org" placeholder="Current Organisation" class="inputv" readonly="true" onclick="add_org()" /><br/>
@@ -165,7 +168,12 @@ if($form)
 					<input type="text" name="cur_ctc" placeholder="Current CTC" class="inputv" required readonly="true" onclick="add_ctc()"><br>
 					<input type="text" name="exp_ctc" placeholder="Expected CTC" class="inputv" required onclick="check_exp()"><br>
 					<input type="text" name="not_period" placeholder="Notice Period" class="inputv" required readonly="true" onclick="add_nop()"><br>
-					Qualifications:
+					<label>Notice Period in:
+					<select name="not_period_dm">
+						<option value="0" selected>Day(s)</option>
+						<option value="1">Month(s)</option>
+					</select></label><br/>
+					<label>Qualifications:</label>
 					<div>
 						<?php
 							foreach($qual as $q)

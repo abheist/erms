@@ -14,12 +14,12 @@ if(isset($_GET['id']))
 		if(mysqli_num_rows($result)==1)
 		{
 			$row=mysqli_fetch_array($result, MYSQL_ASSOC);
-?>
+?>		<h3 id="secjobtitle">Candidate Profile (<a href="editprofile?id=<?php echo $enc_cid; ?>">Edit</a>)</h3>
 		<div id="can1">
 			<div id="can2">
 				<div id="can3">
 					<div id="can4">
-						<h3 id="secjobtitle">Candidate Profile (<a href="editprofile">Edit</a>)</h3>
+						
 
 <?php
 			echo '<h6 id="secjobhead">Name: '.$row['name'].'</h6>';
@@ -31,7 +31,11 @@ if(isset($_GET['id']))
 			{
 				echo '<h6 id="secjobhead">Status: Working in '.$row['cur_org'].'</h6>';
 				echo '<h6 id="secjobhead">Experience: '.$row['exprnc'].' years</h6>';
-				echo '<h6 id="secjobhead">Notice Period: '.$row['not_period'].' months</h6>';
+				if($row['not_period_dm'])
+					$duration="Month(s)";
+				else
+					$duration="Day(s)";
+				echo '<h6 id="secjobhead">Notice Period: '.$row['not_period'].' '.$duration.'</h6>';
 				echo '<h6 id="secjobhead">Current CTC: Rs. '.number_format($row['cur_ctc']).'</h6>';
 			}
 			echo '<h6 id="secjobhead">Expected CTC: Rs. '.number_format($row['exp_ctc']).'</h6>';
