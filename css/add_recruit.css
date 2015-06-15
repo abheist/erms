@@ -23,7 +23,8 @@ a	{
 
 
 #rec3	{
-	height: 400px;
+	padding-bottom:50px;
+	margin-bottom: 100px; 
 	width: 900px;
 	background: #ffffff;
 	margin: 0px auto;
@@ -39,6 +40,9 @@ a	{
 	color: rgba(0,0,0,0.5);
 }
 
+#rec1{
+	margin-bottom: 100px;
+}
 #rec4	{
 	width: 500px;
 	margin: 0px auto

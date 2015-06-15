@@ -1,12 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['user_id']) || isset($_SESSION['user_name']) || isset($_SESSION['user_right']))
-{
-	if(!isset($_GET['code']))
-		$changepass=true;
-	else
-		header('Location: .');
-}
+    header('Location: .');
 $form=true;
 $error="";
 $sqlerr=false;
@@ -19,7 +14,7 @@ if(isset($_GET['code']))
 	else
 		header('Location: .');
 }
-else if(!isset($_POST['submit']) && !$changepass)
+else if(!isset($_POST['submit']))
 	header('Location: .');
 if(isset($_POST['submit']))
 {
@@ -27,7 +22,7 @@ if(isset($_POST['submit']))
 	$code=mysqli_real_escape_string($dbc, $_POST['code']);
 	$pass=mysqli_real_escape_string($dbc, $_POST['pass']);
 	$cnfrmpass=mysqli_real_escape_string($dbc, $_POST['cnfrmpass']);
-	if(empty($pass) || empty($cnfrmpass) || (isset($changepass) && empty($oldpass=mysqli_real_escape_string($dbc, $_POST['oldpass']))))
+	if(empty($pass) || empty($cnfrmpass))
 	{
 		$error="Empty Field(s)";
 		$form=true;
@@ -39,47 +34,21 @@ if(isset($_POST['submit']))
 	}
 	else
 	{
-		if(isset($changepass))
+		$query="select actual_id from temp where code='$code'";
+		$result=mysqli_query($dbc, $query)	or die('Error');
+		if(mysqli_num_rows($result)==1)
 		{
-			if($changepass)
-			{
-				$uid=$_SESSION['user_id'];
-				$query="select user_name from user_details where user_id=$uid and user_pass=SHA('$oldpass')";
-				$result=mysqli_query($dbc, $query) or die('Error in changing password');
-				if(mysqli_num_rows($result)==1)
-				{
-					if($oldpass==$pass)
-					{
-						$form=true;
-						$error="Old password and new password cant be same";
-					}
-				}
-				else
-				{
-					$form=true;
-					$error="Invalid Old Password";
-				}
-			}
+			$row=mysqli_fetch_array($result, MYSQL_ASSOC);
+			$uid=$row['actual_id'];
 		}
 		else
 		{
-			$query="select actual_id from temp where code='$code'";
-			$result=mysqli_query($dbc, $query)	or die('Error');
-			if(mysqli_num_rows($result)==1)
-			{
-				$row=mysqli_fetch_array($result, MYSQL_ASSOC);
-				$uid=$row['actual_id'];
-			}
-			else
-			{
-				$form=true;
-				$error='Request for a new <a href="forget">link </a> or <a href=".">login</a>';
-			}
+			$form=true;
+			$error='Request for a new <a href="forget">link </a> or <a href=".">login</a>';
 		}
 	}
 	if(!$form)
 	{
-
 		$query="update user_details set user_pass=SHA('$pass') where user_id=$uid";
 		$result=mysqli_query($dbc, $query);
 		if($result)
@@ -114,7 +83,7 @@ if($form)
 <body>
 	<div>
 		<div>
-			<h1 id="heading"><a href=".">Erasmith</a></h1>
+			<h1 id="heading">Erasmith</h1>
 		</div>
 	</div>
 
@@ -128,13 +97,8 @@ if($form)
 					<div id="error"> <?php echo $error; 	?></div>
 
 					<form method="post" action="changepass">
-						<?php
-							if(isset($changepass))
-								if($changepass)
-									echo '<input type="password" name="oldpass" id="mailfield" placeholder="Old Password" required><br/>';
-						?>
 						<input type="password" name="pass" id="mailfield" placeholder="New Password" required><br/>
-						<input type="hidden" name="code" value="<?php if(isset($code)) echo $code; else if(isset($changepass)) echo rand();?>"/> 
+						<input type="hidden" name="code" value="<?php if(isset($code)) echo $code; ?>"/> 
 						<input type="password" name="cnfrmpass" id="mailfield" placeholder="Confirm New Password" required><br/>
 						<input type="submit" name="submit" value="Submit" id="submitbutton"><br><br>
 					</form>
@@ -146,4 +110,4 @@ if($form)
 </html>
 <?php
 }
-?>	
+?>

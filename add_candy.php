@@ -32,19 +32,26 @@ if(isset($_POST['submit']))
 	$exp_ctc=mysqli_real_escape_string($dbc,trim($_POST['exp_ctc']));
 	$not_period=mysqli_real_escape_string($dbc,trim($_POST['not_period']));
 	$not_period_dm=$_POST['not_period_dm'];
+	$added_by=$_SESSION['user_id'];
+	if(isset($_FILES['resume']))
+	{
+		$res_name=mysqli_real_escape_string($dbc, $_FILES['resume']['name']);
+		$res_size=mysqli_real_escape_string($dbc, $_FILES['resume']['size']);
+		$res_ext=strtolower(end(explode('.',$res_name)));
+	}
 	if(empty($name) || empty($contactno) || empty($ca_email) || empty($exp_ctc) || strlen($contactno)!=10)
 	{
 			$form=true;
 			$error="Please fill out all valid entries";
 	}
-	else if(!ctype_alpha($name))
+	else if(!ctype_alpha(str_replace(' ', '',$name)))
 	{
 		$form=true;
 		$error="Name can not contain numeric characters";
 	}
 	else
 	{
-			if($ca_check==2 && (empty($cur_org) || empty($cur_ctc) || empty($not_period)))
+			if($ca_check==2 && (empty($cur_org) || empty($cur_ctc) || empty($not_period) && $not_period!=0))
 			{
 					$form=true;
 					$error="Please fill your current organisation's details";
@@ -93,6 +100,13 @@ if(isset($_POST['submit']))
 						$add=true;
 					}
 				}
+		else
+		{
+			if(($res_ext=='doc')||($res_ext=='pdf')||($res_ext=='docx'))
+				$form=false;
+			else
+				$form=true;			
+		}
 		if(!$form)
 		{
 			if($ca_check==1)
@@ -109,12 +123,23 @@ if(isset($_POST['submit']))
 				$not_period=0;
 				$not_period_dm=0;
 			}
-			$query="insert into candidate_details(name,contactno,ca_email,cur_org,exp_ctc,exprnc,cur_ctc,not_period,not_period_dm) values('$name',$contactno,'$ca_email','$cur_org',$exp_ctc,$exprnc,$cur_ctc,$not_period,not_period_dm)";
+			$query="insert into candidate_details(name,contactno,ca_email,cur_org,exp_ctc,exprnc,cur_ctc,not_period,not_period_dm,added_by) values('$name',$contactno,'$ca_email','$cur_org',$exp_ctc,$exprnc,$cur_ctc,$not_period,$not_period_dm,$added_by)";	
 			mysqli_query($dbc,$query) or die($query);
 			$query="select candid_id from candidate_details where ca_email='$ca_email'";
 			$result=mysqli_query($dbc,$query) or die('Error in querying');
 			$row=mysqli_fetch_array($result);
 			$canid=$row['candid_id'];
+			if(isset($user_fields))
+			{
+				$query="update candidate_details set ";
+				foreach($user_fields as $ufield)
+				{
+					$value=mysqli_real_escape_string($dbc, trim($_POST[substr($ufield['field_title'], 0,4)]));
+					$query.=$ufield['field_name']."='".$value."' , " ;
+				}
+				$query=substr($query,0,-2)."where candid_id=$canid";
+				mysqli_query($dbc,$query) or die($query);
+			}
 			if($add)
 			{
 				$query="insert into qualif(qname) values('$add_qualif')";
@@ -135,6 +160,16 @@ if(isset($_POST['submit']))
 				foreach($_POST['qual'] as $q)
 					$query.="($canid,$q),";
 				mysqli_query($dbc, substr($query,0,-1)) or die($query);
+			}
+			if(isset($res_name))
+			{
+				$res_name=$canid.'.'.$res_ext;
+				$res_path="resumes/".$res_name;
+				if(move_uploaded_file($_FILES['resume']['tmp_name'], $res_path))
+				{
+					$query="update candidate_details set resext='$res_ext' where candid_id=$canid";
+					$result=mysqli_query($dbc, $query);
+				}
 			}
 			header('Location: viewcand');
 		}
@@ -159,14 +194,14 @@ if($form)
 
 					<?php echo $error;	?>
 
-				 <form name="add_candy" method="post" action="add_candy">
+				 <form name="add_candy" method="post" action="add_candy" enctype="multipart/form-data">
 					<input type="text" placeholder="Name" class="inputv" name="name" required <?php if(isset($name)) echo "value=$name";?> ><br/>
 					<input type="text" placeholder="Contact No." maxlength="10" size="10" class="inputv" name="contactno" required <?php if(isset($contactno)) echo "value=$contactno";?>><br/>
 					<input type="email" placeholder="E-Mail" class="inputv" name="ca_email" required <?php if(isset($ca_email)) echo "value=$ca_email";?>><br/>
 					<label>Current Status: <select name="org">
 						<option value="0">Fresher</option>
 						<option value="1">Currently Not Working</option>
-						<option value="2">Working </option>
+						<option value="2" selected>Working </option>
 					</select></label>
 					<input type="text" name="cur_org" placeholder="Current Organisation" class="inputv" readonly="true" onclick="add_org()" /><br/>
 					<input type="text" name="exprnc" placeholder="Experience" class="inputv" required ><br>
@@ -186,7 +221,9 @@ if($form)
 								echo '<erms><input type="checkbox" name="qual[]" value="'.$q['qid'].'"><span id="ermsid">'.$q['qname'].'</span></erms>';
 						 	}
 						?>
-					</div>
+					</div><br/>
+					<label>Upload Resume:(pdf/doc only)* </label>
+					<div><input type="file" name="resume"/></div>
 					<div style="clear:both;height:20px;"></div>
 					<input type="checkbox" name="qualif" value="-1"/> Add one (If not listed)
 					<input type="text" name="addqualif" class="inputv" placeholder="Add Qualification" readonly="readonly" onclick="add_qual()" <?php if(isset($add_qualif)) echo "value=$add_qualif";?>/>

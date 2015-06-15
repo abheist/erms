@@ -29,16 +29,17 @@ if(isset($_GET['id']))
 				echo '<h6 id="canstatus">Status: '.$row['cur_org'].'</h6>';
 			else
 			{
-				echo '<h6 id="canstatus">Status: Working in '.$row['cur_org'].'</h6>';
+				echo '<h6 id="canstatus">Status: Working with '.$row['cur_org'].'</h6>';
 				echo '<h6 id="canstatus">Experience: '.$row['exprnc'].' years</h6>';
 				if($row['not_period_dm'])
 					$duration="Month(s)";
 				else
 					$duration="Day(s)";
 				echo '<h6 id="canstatus">Notice Period: '.$row['not_period'].' '.$duration.'</h6>';
-				echo '<h6 id="canstatus">Current CTC: Rs. '.number_format($row['cur_ctc']).'</h6>';
+				echo '<h6 id="canstatus">Current CTC (INR in Lacs): '.number_format($row['cur_ctc']).'</h6>';
 			}
-			echo '<h6 id="canstatus">Expected CTC: Rs. '.number_format($row['exp_ctc']).'</h6>';
+			echo '<h6 id="canstatus">Expected CTC (INR in Lacs): '.number_format($row['exp_ctc']).'</h6>';
+			echo '<h6 id="canstatus">Resume: </h6>';
 			$cid=$row['candid_id'];
 			$query="select qname from candid_qualif inner join qualif using(qid) where candid_id=$cid";
 			$result1=mysqli_query($dbc, $query) or die('Error');
@@ -51,6 +52,22 @@ if(isset($_GET['id']))
 			echo '<h6 id="canqual">Qualifications:</h6>';
 			foreach ($cur_qual as $cqual) 
 				echo '<div id="canstatus"><br/>'.$cqual['qname'].'</div>';
+			$query="select field_title,field_name from candi_field_title";
+			$result2=mysqli_query($dbc, $query) or die('Error in setting up');
+			if(mysqli_num_rows($result2)>0)
+			{
+				$user_fields=array();
+				while($row2=mysqli_fetch_array($result2, MYSQL_ASSOC))
+					array_push($user_fields, $row2);
+			}
+			if(isset($user_fields))
+			{
+				foreach($user_fields as $ufield)
+				{
+					$value=$ufield['field_name'];
+					echo '<h6 id="canstatus">'.$ufield['field_title'].' : '.$row[$value].'</h6>';
+				}
+			}
 		}
 	}
 }

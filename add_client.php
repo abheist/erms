@@ -70,44 +70,24 @@ if($form)
 		<div id="rec2">
 			<div id="rec3">
 				<div id="rec4">
-					<h3 id="addhead">Add Recruiter</h3>
+					<h3 id="addhead">Add Client</h3>
 
 					<?php echo $error; ?>
-
-					<form method="post" action="add_recruit">
-					<input type="text" placeholder="Name" name="user_name" value="<?php if(isset($user_name)) echo $user_name;?>" required><br>
-					<input type="email" placeholder="E-Mail" name="user_email" value="<?php if(isset($user_email)) echo $user_email;?>" required><br>
-					<input type="password" placeholder="Password" name="user_pass" required><br>
-					<label>Level: <select name="user_right">
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2" selected>2</option>
-					</select></label>
-					&nbsp&nbsp&nbsp&nbsp<a class="hastip" 
-					title="
-					<ol>
-						<li>1.SuperUser: All Rights.</li>
-						<li>2.Manager: All rights except managing recruiters.</li>
-						<li>3.User: Rights to post a job opportunity and add candidates.</li>
-					</ol>"><span id="lalaques">?</span></a>
- 
-					<script type="text/javascript">
-					$('.hastip').tooltipsy({
-    offset: [10, 0],
-    css: {
-        'padding': '10px 10px 0px 10px',
-        'color': '#303030',
-        'background-color': '#f5f5b5',
-        'border': '1px solid #deca7e',
-        '-moz-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        '-webkit-box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        'box-shadow': '0 0 10px rgba(0, 0, 0, .5)',
-        'text-shadow': 'none'
-    }
-});
-					</script>
-					<input type="submit" id="submitbutton" value="Add Recruiter" name="submit">
+					
+					<form method="post" action="add_client">
+						<div class="form-group">
+							<label for="client_name">Client Name: </label>
+							<input type="text" class="form-control" placeholder="Erasmith Technologies Pvt Ltd" name="client_name" value="<?php if(isset($client_name)) echo $client_name;?>" required><br/>
+						</div>
+						<div class="form-group">
+							<label for="client_addr">Client Address: </label>
+							<textarea class="form-control" rows="5" placeholder="Shiksha Bharti School Rd, Block C, Palam Extension, Palam Colony, New Delhi, Delhi 110077" required></textarea><br/>
+						</div>
+						<p id="add_person" class="well well-sm"> Add Contact Person </p>
+					
+					<input type="submit"  class="btn-success" name="submit" value="Add Client">
 				</form>
+		
 				</div>
 			</div>
 		</div>

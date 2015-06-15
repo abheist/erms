@@ -1,12 +1,10 @@
-<html>
-<head>
-	<title>Post Job | Erasmith</title>
-	<link rel="stylesheet" type="text/css" href="css/form.css">
-</head>
-<body>
-	<h1 id="heading">Erasmith</h1>
-
-	<h2 id="jobhead">Job Posting</h2>
+<?php
+$reqlogin=true;
+$css="form";
+require_once ('header.php');
+$_SESSION['active']=false;
+?>	
+	<h2 id="jobhead">Job Opportunity</h2>
 	<div id="formbox1">
 		<div id="formbox2">
 			<div id="formbox3">

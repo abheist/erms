@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2015 at 06:17 PM
+-- Generation Time: Jun 11, 2015 at 05:06 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -35,20 +35,18 @@ CREATE TABLE IF NOT EXISTS `candidate_details` (
   `exprnc` tinyint(4) DEFAULT '0',
   `cur_ctc` int(11) DEFAULT '0',
   `exp_ctc` int(11) DEFAULT '0',
-  `not_period` int(11) NOT NULL DEFAULT '0',
-  `not_period_dm` tinyint(1) NOT NULL DEFAULT '0',
-  `categ` varchar(30) NOT NULL
+  `not_period` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `candidate_details`
 --
 
-INSERT INTO `candidate_details` (`candid_id`, `name`, `contactno`, `ca_email`, `cur_org`, `exprnc`, `cur_ctc`, `exp_ctc`, `not_period`, `not_period_dm`, `categ`) VALUES
-(12, 'Prashant Verma', 9927971203, 'prashant.kv00@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, ''),
-(13, 'Mayank Bansal', 9412727202, 'mk.sk@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, ''),
-(14, 'Abhishek Singh', 9837449449, 'kapil.agrawal947@gmail.com', 'Erasmith Technologies', 1, 125000, 100000, 12, 0, ''),
-(15, 'lalal', 9999999998, 'test@test.com', 'Testing Co.', 2, 125000, 220000, 1, 0, '');
+INSERT INTO `candidate_details` (`candid_id`, `name`, `contactno`, `ca_email`, `cur_org`, `exprnc`, `cur_ctc`, `exp_ctc`, `not_period`) VALUES
+(12, 'Prashant Verma', 9927971203, 'prashant.kv00@gmail.com', 'Fresher', 0, 0, 100000, 0),
+(13, 'Mayank Bansal', 9412727202, 'mk.sk@gmail.com', 'Fresher', 0, 0, 100000, 0),
+(14, 'Abhishek Singh', 9837449449, 'kapil.agrawal947@gmail.com', 'Fresher', 0, 0, 100000, 0),
+(15, 'Test Candidate', 9999999999, 'test@test.com', 'Testing Co.', 2, 125000, 220000, 1);
 
 -- --------------------------------------------------------
 
@@ -83,13 +81,6 @@ CREATE TABLE IF NOT EXISTS `candi_field_title` (
   `field_title` varchar(50) NOT NULL,
   `field_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `candi_field_title`
---
-
-INSERT INTO `candi_field_title` (`field_id`, `field_title`, `field_name`) VALUES
-(1, 'Category', 'categ');
 
 -- --------------------------------------------------------
 

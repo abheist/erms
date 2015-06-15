@@ -194,6 +194,18 @@ if(isset($_POST['submit']))
 				}	
 			}
 //--------------------------------QUALIFICATIONS ADDED OR REMOVED--------------------------------------------------
+			if(isset($user_fields))
+			{
+				$query="update candidate_details set ";
+				foreach($user_fields as $ufield)
+				{
+					$value=mysqli_real_escape_string($dbc, trim($_POST[substr($ufield['field_title'], 0,4)]));
+					$query.=$ufield['field_name']."='".$value."' , " ;
+				}
+				$query=substr($query,0,-2)."where SHA(candid_id)='$enc_cid'";
+				mysqli_query($dbc,$query) or die($query);
+			}
+//--------------------------------ENTRIES IN USER DEFINED FIELDS UPDATED--------------------------------------------------
 			header('Location: viewcand');
 		}// Form is False
 	}// Form is False
