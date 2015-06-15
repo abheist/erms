@@ -59,3 +59,32 @@ td	{
 	background: rgba(0,0,255,0.2);
 	color: white;
 }
+
+#inputsearchfield	{
+	width: 30%;
+	height: 40px;
+	border-radius: 3px;
+	margin-left: 35%;
+	border: 1px solid blue;
+	outline-color: blue;
+}
+
+#subbutti	{
+	width: 20%;
+	margin-left: 40%;
+	height: 35px;
+	margin-bottom: 150px;
+	background: skyblue;
+	border: 2px;
+	border-radius: 6px;
+	margin-top: 30px;
+}
+
+#subbutti:hover	{
+	background: rgba(0,0,255,0.2);
+	color: white;
+}
+
+#inputsearchfield[placeholder]	{
+	padding-left: 10px;
+}

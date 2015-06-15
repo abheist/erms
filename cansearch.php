@@ -1,6 +1,6 @@
 <?php
 $reqlogin=true; 
-$css="viewcand";
+$css="viewrec";
 require_once 'header.php';
 if(isset($_POST['submit']) || isset($_GET['search']))
 {
@@ -47,6 +47,6 @@ if(isset($_POST['submit']) || isset($_GET['search']))
 }
 ?>
 <form method="post" action="cansearch">
-	<input type="search" name="search" placeholder="Search" value="<?php if(isset($search)) echo $search; ?>"/>
-	<input type="submit" value="Search" name="submit"/>
+	<input type="search" name="search" placeholder="Search" value="<?php if(isset($search)) echo $search; ?>" id="inputsearchfield" /><br>
+	<input type="submit" value="Search" name="submit" id="subbutti"/>
 </form>

@@ -195,19 +195,19 @@ if($form)
 					<?php echo $error;	?>
 
 				 <form name="add_candy" method="post" action="add_candy" enctype="multipart/form-data">
-					<input type="text" placeholder="Name" class="inputv" name="name" required <?php if(isset($name)) echo "value=$name";?> ><br/>
-					<input type="text" placeholder="Contact No." maxlength="10" size="10" class="inputv" name="contactno" required <?php if(isset($contactno)) echo "value=$contactno";?>><br/>
-					<input type="email" placeholder="E-Mail" class="inputv" name="ca_email" required <?php if(isset($ca_email)) echo "value=$ca_email";?>><br/>
+					Full Name: <input type="text" placeholder="Name" class="inputv" name="name" required <?php if(isset($name)) echo "value=$name";?> ><br/>
+					Contact No: <input type="text" placeholder="Contact No." maxlength="10" size="10" class="inputv" name="contactno" required <?php if(isset($contactno)) echo "value=$contactno";?>><br/>
+					E-Mail: <input type="email" placeholder="E-Mail" class="inputv" name="ca_email" required <?php if(isset($ca_email)) echo "value=$ca_email";?>><br/>
 					<label>Current Status: <select name="org">
 						<option value="0">Fresher</option>
 						<option value="1">Currently Not Working</option>
 						<option value="2" selected>Working </option>
 					</select></label>
-					<input type="text" name="cur_org" placeholder="Current Organisation" class="inputv" readonly="true" onclick="add_org()" /><br/>
-					<input type="text" name="exprnc" placeholder="Experience" class="inputv" required ><br>
-					<input type="text" name="cur_ctc" placeholder="Current CTC" class="inputv" required readonly="true" onclick="add_ctc()"><br>
-					<input type="text" name="exp_ctc" placeholder="Expected CTC" class="inputv" required onclick="check_exp()"><br>
-					<input type="text" name="not_period" placeholder="Notice Period" class="inputv" required readonly="true" onclick="add_nop()"><br>
+					Current Organisation: <input type="text" name="cur_org" placeholder="Current Organisation" class="inputv" readonly="true" onclick="add_org()" /><br/>
+					Experience: <input type="text" name="exprnc" placeholder="Experience" class="inputv" required ><br>
+					Current CTC: <input type="text" name="cur_ctc" placeholder="Current CTC" class="inputv" required readonly="true" onclick="add_ctc()"><br>
+					Expected CTC: <input type="text" name="exp_ctc" placeholder="Expected CTC" class="inputv" required onclick="check_exp()"><br>
+					Notice Period: <input type="text" name="not_period" placeholder="Notice Period" class="inputv" required readonly="true" onclick="add_nop()"><br>
 					<label>Notice Period in:
 					<select name="not_period_dm">
 						<option value="0" selected>Day(s)</option>
@@ -231,7 +231,7 @@ if($form)
 					if(isset($user_fields))
 					{
 						foreach($user_fields as $ufield)
-							echo '<input type="text" class="inputv" placeholder="'.$ufield['field_title'].'" name="'.substr($ufield['field_title'],0,4).'"/>';
+							echo $ufield['field_title'].'<input type="text" class="inputv" placeholder="'.$ufield['field_title'].'" name="'.substr($ufield['field_title'],0,4).'"/>';
 					}
 					echo '<input type="submit" name="submit" class="inputv" id="submitbutton" value="Add Candidate">';
 				echo '</form>';
