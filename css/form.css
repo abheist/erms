@@ -27,6 +27,19 @@ body	{
 	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
 }
 
+#formbox13	{
+	height: 200px;
+	width: 900px;
+	background: #ffffff;
+	margin: 0px auto;
+	margin-bottom: 150px;
+	font-size: 25px;
+	border-radius: 6px;
+	box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+}
+
+
+
 #jobhead	{
 	font-size: 50px;
 	color: rgba(0,0,0,0.5);
@@ -34,7 +47,15 @@ body	{
 	line-height: 120px;
 }
 
-#formbox4	{
+#checking	{
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.firstex	{
+	width: 50%;
+	margin: 0px auto;
+	padding-top: 60px;
 }
 
 #jobtitle	{
@@ -78,22 +99,24 @@ body	{
 }
 
 #jobsummary	{
-	width: 300px;
-	max-width: 300px;
 	max-height: 200px;
-	margin-left: 90px;
-	margin-right: 10px;
 	height: 200px;
 	background: #fafafa;
 	overflow: auto;
 	border-radius: 3px;
 	outline-color: rgba(0,0,0,0.4);
+	width: 600px;
+	margin: 0px 0px 0px 160px;
 }
 
 #jobsummary[placeholder]	{
 	padding-top: 10px;
 	padding-left: 10px;
 	color: rgba(0,0,0,0.5);
+}
+
+#jobdet	{
+	font-size: 15px;
 }
 
 #jobdetails	{
