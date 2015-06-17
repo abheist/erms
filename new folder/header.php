@@ -80,14 +80,15 @@ if($reqlogin)
 
 
                     <li class="dropdown listitems">
-                         <button class=" dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Clients
+                         <button class=" dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="add_client">Add Client</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="add_cp">Add Client Persons</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
                             <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="viewclient">Client Details</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
                         </ul>
                     </li>
            
@@ -95,11 +96,11 @@ if($reqlogin)
                 <?php /* 
                     echo '<a href="add_client"><li class="listitems" id="secondli">Add Client</li></a>';
                     echo '<a href="add_cp"><li class="listitems" id="secondli">Add Client Person</li></a>';
-                    echo '<a href="viewclient"><li class="listitems" id="secondli">Clients Details</li></a>';*/
+                    echo '<a href="viewclient"><li class="listitems" id="secondli">Clients Details</li></a>';
                     if($_SESSION['user_right']==0)
                     {
                         echo '<a href="add_recruit"><li class="listitems" id="secondli">Add Recruiter</li></a>';
-                    }
+                    }*/
                 }
                 ?>
             </ul>

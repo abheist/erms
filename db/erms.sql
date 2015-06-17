@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2015 at 07:41 PM
+-- Generation Time: Jun 16, 2015 at 07:51 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -127,14 +127,15 @@ CREATE TABLE IF NOT EXISTS `client_details` (
 `client_id` bigint(30) NOT NULL,
   `client_name` char(40) NOT NULL,
   `client_addr` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client_details`
 --
 
 INSERT INTO `client_details` (`client_id`, `client_name`, `client_addr`) VALUES
-(8, 'Erasmith Technologies Pvt Ltd', 'New Delhi, Delhi-110077');
+(8, 'Erasmith Technologies Pvt Ltd', 'New Delhi, Delhi-110077'),
+(9, 'Vrindavan Wire Industries', 'Industrial Area, Dilshad Garden, New Delhi');
 
 -- --------------------------------------------------------
 
@@ -147,16 +148,77 @@ CREATE TABLE IF NOT EXISTS `contact_person_details` (
   `cp_name` char(40) NOT NULL,
   `cp_phnno` bigint(10) NOT NULL,
   `cp_email` varchar(50) NOT NULL,
-  `client_id` bigint(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `client_id` bigint(30) NOT NULL,
+  `cp_desig` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contact_person_details`
 --
 
-INSERT INTO `contact_person_details` (`cp_id`, `cp_name`, `cp_phnno`, `cp_email`, `client_id`) VALUES
-(2, 'Kapil Agrawal', 9837449449, 'kapil.agrawal947@gmail.com', 8),
-(3, 'Abhishek Singh', 9761250893, 'yabhis@gmail.com', 8);
+INSERT INTO `contact_person_details` (`cp_id`, `cp_name`, `cp_phnno`, `cp_email`, `client_id`, `cp_desig`) VALUES
+(4, 'Shyam Singh', 9310124000, 'shyam.singh@vwi.co.in', 9, 'Senior Manager'),
+(5, 'Praveen Sharma', 9310124001, 'praveen.sharma@vwi.co.in', 9, 'Assistant Manager');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_opp`
+--
+
+CREATE TABLE IF NOT EXISTS `job_opp` (
+`job_id` bigint(100) NOT NULL,
+  `client_id` bigint(30) NOT NULL,
+  `job_title` varchar(100) NOT NULL,
+  `job_location` varchar(100) NOT NULL,
+  `job_exprnc` int(11) NOT NULL DEFAULT '0',
+  `job_qty` int(11) NOT NULL DEFAULT '0',
+  `job_not_period` int(11) NOT NULL DEFAULT '0',
+  `primary_contact` bigint(100) NOT NULL,
+  `job_owner` bigint(100) NOT NULL,
+  `added_on` datetime DEFAULT NULL,
+  `priority` tinyint(4) DEFAULT '1',
+  `job_desc` varchar(10) NOT NULL,
+  `job_other` varchar(10) DEFAULT NULL,
+  `salary` varchar(70) NOT NULL,
+  `not_period_dm` tinyint(1) NOT NULL DEFAULT '0',
+  `user_id` bigint(100) NOT NULL,
+  `qualif` varchar(150) DEFAULT NULL,
+  `assign_to` bigint(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_opp`
+--
+
+INSERT INTO `job_opp` (`job_id`, `client_id`, `job_title`, `job_location`, `job_exprnc`, `job_qty`, `job_not_period`, `primary_contact`, `job_owner`, `added_on`, `priority`, `job_desc`, `job_other`, `salary`, `not_period_dm`, `user_id`, `qualif`, `assign_to`) VALUES
+(14, 9, 'Software Engineer', 'California', 5, 8, 0, 4, 1, '2015-06-16 21:41:37', 1, '', NULL, '0', 0, 4, NULL, NULL),
+(19, 9, 'Delivery Manager', 'Mountain View, CA, USA', 15, 2, 0, 4, 1, '2015-06-16 21:58:14', 1, '', NULL, '0', 0, 4, NULL, NULL),
+(20, 9, 'Software Engineer', 'California', 12, 8, 2, 4, 1, '2015-06-16 22:24:04', 1, 'txt', NULL, '15 Lacs', 1, 4, NULL, NULL),
+(21, 9, 'Software Engineer', 'New Delhi', 8, 6, 5, 4, 1, '2015-06-16 22:28:08', 1, 'txt', NULL, '15K', 0, 4, NULL, NULL),
+(22, 9, 'Product Designer', '', 15, 0, 0, 4, 1, '2015-06-16 23:01:55', 1, 'txt', 'txt', '', 0, 4, '', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_owner_details`
+--
+
+CREATE TABLE IF NOT EXISTS `job_owner_details` (
+`owner_id` bigint(100) NOT NULL,
+  `owner_name` char(40) NOT NULL,
+  `owner_phnno` bigint(10) NOT NULL,
+  `owner_desig` varchar(30) NOT NULL,
+  `client_id` bigint(30) NOT NULL,
+  `owner_email` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_owner_details`
+--
+
+INSERT INTO `job_owner_details` (`owner_id`, `owner_name`, `owner_phnno`, `owner_desig`, `client_id`, `owner_email`) VALUES
+(1, 'Kapil Agrawal', 9837449449, 'HR Manager', 9, 'kapil.agrawal947@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -166,20 +228,21 @@ INSERT INTO `contact_person_details` (`cp_id`, `cp_name`, `cp_phnno`, `cp_email`
 
 CREATE TABLE IF NOT EXISTS `qualif` (
 `qid` bigint(11) NOT NULL,
-  `qname` varchar(10) NOT NULL
+  `qname` varchar(10) NOT NULL,
+  `job_id` bigint(100) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `qualif`
 --
 
-INSERT INTO `qualif` (`qid`, `qname`) VALUES
-(5, 'B.Tech'),
-(6, 'M.Tech'),
-(7, 'Ph.D'),
-(8, 'B.Arch'),
-(9, 'B.A.'),
-(10, 'Mba');
+INSERT INTO `qualif` (`qid`, `qname`, `job_id`) VALUES
+(5, 'B.Tech', NULL),
+(6, 'M.Tech', NULL),
+(7, 'Ph.D', NULL),
+(8, 'B.Arch', NULL),
+(9, 'B.A.', NULL),
+(10, 'Mba', NULL);
 
 -- --------------------------------------------------------
 
@@ -252,10 +315,22 @@ ALTER TABLE `contact_person_details`
  ADD PRIMARY KEY (`cp_id`), ADD UNIQUE KEY `cp_email` (`cp_email`), ADD KEY `client_id` (`client_id`);
 
 --
+-- Indexes for table `job_opp`
+--
+ALTER TABLE `job_opp`
+ ADD PRIMARY KEY (`job_id`), ADD KEY `client_id` (`client_id`), ADD KEY `primary_contact` (`primary_contact`), ADD KEY `user_id` (`user_id`), ADD KEY `job_owner` (`job_owner`), ADD KEY `assign_to` (`assign_to`);
+
+--
+-- Indexes for table `job_owner_details`
+--
+ALTER TABLE `job_owner_details`
+ ADD PRIMARY KEY (`owner_id`), ADD KEY `client_id` (`client_id`);
+
+--
 -- Indexes for table `qualif`
 --
 ALTER TABLE `qualif`
- ADD PRIMARY KEY (`qid`);
+ ADD PRIMARY KEY (`qid`), ADD KEY `job_id` (`job_id`);
 
 --
 -- Indexes for table `temp`
@@ -287,12 +362,22 @@ MODIFY `field_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `client_details`
 --
 ALTER TABLE `client_details`
-MODIFY `client_id` bigint(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `client_id` bigint(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `contact_person_details`
 --
 ALTER TABLE `contact_person_details`
-MODIFY `cp_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `cp_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `job_opp`
+--
+ALTER TABLE `job_opp`
+MODIFY `job_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `job_owner_details`
+--
+ALTER TABLE `job_owner_details`
+MODIFY `owner_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `qualif`
 --
@@ -325,6 +410,28 @@ ADD CONSTRAINT `candid_qualif_ibfk_2` FOREIGN KEY (`qid`) REFERENCES `qualif` (`
 --
 ALTER TABLE `contact_person_details`
 ADD CONSTRAINT `contact_person_details_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client_details` (`client_id`);
+
+--
+-- Constraints for table `job_opp`
+--
+ALTER TABLE `job_opp`
+ADD CONSTRAINT `job_opp_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client_details` (`client_id`),
+ADD CONSTRAINT `job_opp_ibfk_2` FOREIGN KEY (`primary_contact`) REFERENCES `contact_person_details` (`cp_id`),
+ADD CONSTRAINT `job_opp_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user_details` (`user_id`),
+ADD CONSTRAINT `job_opp_ibfk_5` FOREIGN KEY (`job_owner`) REFERENCES `job_owner_details` (`owner_id`),
+ADD CONSTRAINT `job_opp_ibfk_6` FOREIGN KEY (`assign_to`) REFERENCES `user_details` (`user_id`);
+
+--
+-- Constraints for table `job_owner_details`
+--
+ALTER TABLE `job_owner_details`
+ADD CONSTRAINT `job_owner_details_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `client_details` (`client_id`);
+
+--
+-- Constraints for table `qualif`
+--
+ALTER TABLE `qualif`
+ADD CONSTRAINT `qualif_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job_opp` (`job_id`);
 
 --
 -- Constraints for table `temp`

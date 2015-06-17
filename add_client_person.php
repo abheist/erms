@@ -14,6 +14,7 @@ $ajaxid="ajax".$val;
 	<input type="text" class="form-control" placeholder="Kapil Agrawal" name="cp_name<?php echo $val; ?>" required><br/>
 	<input type="text" class="form-control" placeholder="9837449449" name="cp_phnno<?php echo $val; ?>" required><br/>
 	<input type="text" class="form-control" placeholder="kapil.agrawal947@gmail.com" name="cp_email<?php echo $val; ?>" required><br/>
+	<input type="text" class="form-control" placeholder=" HR Manager" name="cp_desig<?php echo $val; ?>" required><br/>
 </div>
 <span style="cursor:pointer"><p id="add_person<?php echo $val; ?>" class="well well-sm"> Add Another Contact Person </p></span>
 <div id="<?php echo $ajaxid; ?>">

@@ -28,7 +28,8 @@
 				$cp_name=mysqli_real_escape_string($dbc,$_POST['cp_name'.$i]);
 				$cp_phnno=mysqli_real_escape_string($dbc,$_POST['cp_phnno'.$i]);
 				$cp_email=mysqli_real_escape_string($dbc,$_POST['cp_email'.$i]);
-				if(empty($cp_name) || empty($cp_phnno) || empty($cp_email) || strlen($cp_phnno)!=10)
+				$cp_desig=mysqli_real_escape_string($dbc,$_POST['cp_desig'.$i]);
+				if(empty($cp_name) || empty($cp_phnno) || empty($cp_email) || empty($cp_desig) || strlen($cp_phnno)!=10)
 				{
 					$error="Please fill all details of contact persons";
 					$form=true;
@@ -39,6 +40,7 @@
 					$client_details[$index]['cp_name']=$cp_name;
 					$client_details[$index]['cp_phnno']=$cp_phnno;
 					$client_details[$index]['cp_email']=$cp_email;
+					$client_details[$index]['cp_desig']=$cp_desig;
 					$i++;
 				}
 			}
@@ -55,9 +57,9 @@
 				{
 					$row=mysqli_fetch_array($result,MYSQL_ASSOC);
 					$client_id=$row['client_id'];
-					$query="insert into contact_person_details(cp_name,cp_phnno,cp_email,client_id) values";
+					$query="insert into contact_person_details(cp_name,cp_phnno,cp_email,cp_desig,client_id) values";
 					foreach($client_details as $cd)
-						$query.= "('".$cd['cp_name']."','".$cd['cp_phnno']."','".$cd['cp_email']."',".$client_id."),";
+						$query.= "('".$cd['cp_name']."','".$cd['cp_phnno']."','".$cd['cp_email']."','".$cd['cp_desig']."',".$client_id."),";
 					$result=mysqli_query($dbc,substr($query,0,-1)) or die($query);
 					if($result)
 						header('Location:.');
