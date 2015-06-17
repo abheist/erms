@@ -7,7 +7,9 @@ body	{
 	background: #fafafa;
 	margin: 0px;
 }
-
+.listitems  {
+            width: 20%;
+        }
 a	{
 	text-decoration: none;
 	color: rgba(0,0,0,0.5);

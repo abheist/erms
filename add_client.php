@@ -62,9 +62,7 @@
 						$query.= "('".$cd['cp_name']."','".$cd['cp_phnno']."','".$cd['cp_email']."','".$cd['cp_desig']."',".$client_id."),";
 					$result=mysqli_query($dbc,substr($query,0,-1)) or die($query);
 					if($result)
-						header('Location:.');
-			
-
+						header('Location: .');
 				}
 				else
 				{

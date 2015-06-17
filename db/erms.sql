@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2015 at 07:51 PM
+-- Generation Time: Jun 17, 2015 at 04:06 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -46,20 +46,19 @@ CREATE TABLE IF NOT EXISTS `candidate_details` (
 -- Dumping data for table `candidate_details`
 --
 
-INSERT INTO `candidate_details` (`candid_id`, `name`, `contactno`, `ca_email`, `cur_org`, `exprnc`, `cur_ctc`, `exp_ctc`, `not_period`, `not_period_dm`, `added_by`, `categ`, `resext`) VALUES
-(12, 'Prashant Verma', 9927971203, 'prashant.kv00@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, 2, 'Embeeded Systems', ''),
-(13, 'Mayank Bansal', 9412727202, 'mk.sk@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, 2, 'Embeeded Systems', ''),
-(14, 'Abhishek Singh', 9837449449, 'kapil.agrawal947@gmail.com', 'Erasmith Technologies', 1, 125000, 100000, 12, 0, 2, 'Embeeded Systems', ''),
-(15, 'lalal', 9999999998, 'test@test.com', 'Testing Co.', 2, 125000, 220000, 1, 0, 2, 'Embeeded Systems', ''),
-(19, 'Jayati Krishna Goswami', 8171806228, 'jayati.krishna@gmail.com', 'VVDN Technologies', 0, 9000, 15000, 1, 0, 2, 'Embeeded Systems', ''),
-(23, 'Karan Banga', 9045522021, 'karanbanga21@gmail.com', 'Hewlett Packard', 1, 125000, 350000, 1, 1, 3, 'Web Development', ''),
-(24, 'Baldev Patwari', 8756159999, 'baldevp@gmail.com', 'OMitra', 0, 125000, 15000, 2, 1, 2, '', ''),
-(25, 'Satish Kaushik', 9837449449, 'abcd@abc.com', 'Erasmith Technologies', 0, 18562, 32486, 5, 1, 2, 'IT', ''),
-(26, 'Who', 9999999999, 'abc@abcd.com', 'Erasmith Technologies', 5, 250000, 500000, 19, 0, 2, '', ''),
-(27, 'Narendra', 101010101, 'nm@mygov.in', 'Indian Government', 0, 15000, 15000, 0, 0, 2, '', ''),
-(28, 'Narendra', 101010101, 'nmdi@mygov.in', 'Indian Government', 0, 158000, 15000, 0, 0, 2, '', 'pdf'),
-(29, 'Sanjeev Agarwal', 9810604597, 'sanjeev@erasmith.com', 'Erasmith Technologies Pvt Ltd', 25, 30, 40, 60, 0, 4, '', ''),
-(30, 'Sanjeev Agarwal', 9810604597, 'sanjeevuk@yahoo.co.uk', 'Erasmith Technologies Pvt Ltd', 25, 30, 40, 60, 0, 4, 'Delivery Manager', '');
+INSERT INTO `candidate_details` VALUES(12, 'Prashant Verma', 9927971203, 'prashant.kv00@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, 2, 'Embeeded Systems', '');
+INSERT INTO `candidate_details` VALUES(13, 'Mayank Bansal', 9412727202, 'mk.sk@gmail.com', 'Fresher', 0, 0, 100000, 0, 0, 2, 'Embeeded Systems', '');
+INSERT INTO `candidate_details` VALUES(14, 'Abhishek Singh', 9837449449, 'kapil.agrawal947@gmail.com', 'Erasmith Technologies', 1, 125000, 100000, 12, 0, 2, 'Embeeded Systems', '');
+INSERT INTO `candidate_details` VALUES(15, 'lalal', 9999999998, 'test@test.com', 'Testing Co.', 2, 125000, 220000, 1, 0, 2, 'Embeeded Systems', '');
+INSERT INTO `candidate_details` VALUES(19, 'Jayati Krishna Goswami', 8171806228, 'jayati.krishna@gmail.com', 'VVDN Technologies', 0, 9000, 15000, 1, 0, 2, 'Embeeded Systems', '');
+INSERT INTO `candidate_details` VALUES(23, 'Karan Banga', 9045522021, 'karanbanga21@gmail.com', 'Hewlett Packard', 1, 125000, 350000, 1, 1, 3, 'Web Development', '');
+INSERT INTO `candidate_details` VALUES(24, 'Baldev Patwari', 8756159999, 'baldevp@gmail.com', 'OMitra', 0, 125000, 15000, 2, 1, 2, '', '');
+INSERT INTO `candidate_details` VALUES(25, 'Satish Kaushik', 9837449449, 'abcd@abc.com', 'Erasmith Technologies', 0, 18562, 32486, 5, 1, 2, 'IT', '');
+INSERT INTO `candidate_details` VALUES(26, 'Who', 9999999999, 'abc@abcd.com', 'Erasmith Technologies', 5, 250000, 500000, 19, 0, 2, '', '');
+INSERT INTO `candidate_details` VALUES(27, 'Narendra', 101010101, 'nm@mygov.in', 'Indian Government', 0, 15000, 15000, 0, 0, 2, '', '');
+INSERT INTO `candidate_details` VALUES(28, 'Narendra', 101010101, 'nmdi@mygov.in', 'Indian Government', 0, 158000, 15000, 0, 0, 2, '', 'pdf');
+INSERT INTO `candidate_details` VALUES(29, 'Sanjeev Agarwal', 9810604597, 'sanjeev@erasmith.com', 'Erasmith Technologies Pvt Ltd', 25, 30, 40, 60, 0, 4, '', '');
+INSERT INTO `candidate_details` VALUES(30, 'Sanjeev Agarwal', 9810604597, 'sanjeevuk@yahoo.co.uk', 'Erasmith Technologies Pvt Ltd', 25, 30, 40, 60, 0, 4, 'Delivery Manager', '');
 
 -- --------------------------------------------------------
 
@@ -76,27 +75,26 @@ CREATE TABLE IF NOT EXISTS `candid_qualif` (
 -- Dumping data for table `candid_qualif`
 --
 
-INSERT INTO `candid_qualif` (`candid_id`, `qid`) VALUES
-(12, 5),
-(13, 5),
-(14, 7),
-(14, 5),
-(15, 5),
-(19, 5),
-(23, 5),
-(23, 6),
-(24, 5),
-(25, 8),
-(25, 5),
-(25, 6),
-(26, 5),
-(26, 6),
-(26, 7),
-(26, 8),
-(27, 5),
-(28, 9),
-(30, 10),
-(30, 5);
+INSERT INTO `candid_qualif` VALUES(12, 5);
+INSERT INTO `candid_qualif` VALUES(13, 5);
+INSERT INTO `candid_qualif` VALUES(14, 7);
+INSERT INTO `candid_qualif` VALUES(14, 5);
+INSERT INTO `candid_qualif` VALUES(15, 5);
+INSERT INTO `candid_qualif` VALUES(19, 5);
+INSERT INTO `candid_qualif` VALUES(23, 5);
+INSERT INTO `candid_qualif` VALUES(23, 6);
+INSERT INTO `candid_qualif` VALUES(24, 5);
+INSERT INTO `candid_qualif` VALUES(25, 8);
+INSERT INTO `candid_qualif` VALUES(25, 5);
+INSERT INTO `candid_qualif` VALUES(25, 6);
+INSERT INTO `candid_qualif` VALUES(26, 5);
+INSERT INTO `candid_qualif` VALUES(26, 6);
+INSERT INTO `candid_qualif` VALUES(26, 7);
+INSERT INTO `candid_qualif` VALUES(26, 8);
+INSERT INTO `candid_qualif` VALUES(27, 5);
+INSERT INTO `candid_qualif` VALUES(28, 9);
+INSERT INTO `candid_qualif` VALUES(30, 10);
+INSERT INTO `candid_qualif` VALUES(30, 5);
 
 -- --------------------------------------------------------
 
@@ -114,8 +112,7 @@ CREATE TABLE IF NOT EXISTS `candi_field_title` (
 -- Dumping data for table `candi_field_title`
 --
 
-INSERT INTO `candi_field_title` (`field_id`, `field_title`, `field_name`) VALUES
-(1, 'Category', 'categ');
+INSERT INTO `candi_field_title` VALUES(1, 'Category', 'categ');
 
 -- --------------------------------------------------------
 
@@ -127,15 +124,13 @@ CREATE TABLE IF NOT EXISTS `client_details` (
 `client_id` bigint(30) NOT NULL,
   `client_name` char(40) NOT NULL,
   `client_addr` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client_details`
 --
 
-INSERT INTO `client_details` (`client_id`, `client_name`, `client_addr`) VALUES
-(8, 'Erasmith Technologies Pvt Ltd', 'New Delhi, Delhi-110077'),
-(9, 'Vrindavan Wire Industries', 'Industrial Area, Dilshad Garden, New Delhi');
+INSERT INTO `client_details` VALUES(1, 'Google Inc.', 'MountainView, CA, USA');
 
 -- --------------------------------------------------------
 
@@ -150,15 +145,13 @@ CREATE TABLE IF NOT EXISTS `contact_person_details` (
   `cp_email` varchar(50) NOT NULL,
   `client_id` bigint(30) NOT NULL,
   `cp_desig` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contact_person_details`
 --
 
-INSERT INTO `contact_person_details` (`cp_id`, `cp_name`, `cp_phnno`, `cp_email`, `client_id`, `cp_desig`) VALUES
-(4, 'Shyam Singh', 9310124000, 'shyam.singh@vwi.co.in', 9, 'Senior Manager'),
-(5, 'Praveen Sharma', 9310124001, 'praveen.sharma@vwi.co.in', 9, 'Assistant Manager');
+INSERT INTO `contact_person_details` VALUES(1, 'Larry Page', 9999999999, 'larry.page@google.com', 1, 'Co-Founder');
 
 -- --------------------------------------------------------
 
@@ -185,18 +178,13 @@ CREATE TABLE IF NOT EXISTS `job_opp` (
   `user_id` bigint(100) NOT NULL,
   `qualif` varchar(150) DEFAULT NULL,
   `assign_to` bigint(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_opp`
 --
 
-INSERT INTO `job_opp` (`job_id`, `client_id`, `job_title`, `job_location`, `job_exprnc`, `job_qty`, `job_not_period`, `primary_contact`, `job_owner`, `added_on`, `priority`, `job_desc`, `job_other`, `salary`, `not_period_dm`, `user_id`, `qualif`, `assign_to`) VALUES
-(14, 9, 'Software Engineer', 'California', 5, 8, 0, 4, 1, '2015-06-16 21:41:37', 1, '', NULL, '0', 0, 4, NULL, NULL),
-(19, 9, 'Delivery Manager', 'Mountain View, CA, USA', 15, 2, 0, 4, 1, '2015-06-16 21:58:14', 1, '', NULL, '0', 0, 4, NULL, NULL),
-(20, 9, 'Software Engineer', 'California', 12, 8, 2, 4, 1, '2015-06-16 22:24:04', 1, 'txt', NULL, '15 Lacs', 1, 4, NULL, NULL),
-(21, 9, 'Software Engineer', 'New Delhi', 8, 6, 5, 4, 1, '2015-06-16 22:28:08', 1, 'txt', NULL, '15K', 0, 4, NULL, NULL),
-(22, 9, 'Product Designer', '', 15, 0, 0, 4, 1, '2015-06-16 23:01:55', 1, 'txt', 'txt', '', 0, 4, '', NULL);
+INSERT INTO `job_opp` VALUES(1, 1, 'Software Engineer', 'Mountain View, CA, USA', 5, 4, 15, 1, 1, '2015-06-17 14:37:01', 2, 'txt', 'txt', '18 Lacs', 0, 4, 'B.Tech, M.Tech', 2);
 
 -- --------------------------------------------------------
 
@@ -217,8 +205,7 @@ CREATE TABLE IF NOT EXISTS `job_owner_details` (
 -- Dumping data for table `job_owner_details`
 --
 
-INSERT INTO `job_owner_details` (`owner_id`, `owner_name`, `owner_phnno`, `owner_desig`, `client_id`, `owner_email`) VALUES
-(1, 'Kapil Agrawal', 9837449449, 'HR Manager', 9, 'kapil.agrawal947@gmail.com');
+INSERT INTO `job_owner_details` VALUES(1, 'Eric Schmidt', 9010101010, 'CEO', 1, 'eric@google.com');
 
 -- --------------------------------------------------------
 
@@ -236,13 +223,12 @@ CREATE TABLE IF NOT EXISTS `qualif` (
 -- Dumping data for table `qualif`
 --
 
-INSERT INTO `qualif` (`qid`, `qname`, `job_id`) VALUES
-(5, 'B.Tech', NULL),
-(6, 'M.Tech', NULL),
-(7, 'Ph.D', NULL),
-(8, 'B.Arch', NULL),
-(9, 'B.A.', NULL),
-(10, 'Mba', NULL);
+INSERT INTO `qualif` VALUES(5, 'B.Tech', NULL);
+INSERT INTO `qualif` VALUES(6, 'M.Tech', NULL);
+INSERT INTO `qualif` VALUES(7, 'Ph.D', NULL);
+INSERT INTO `qualif` VALUES(8, 'B.Arch', NULL);
+INSERT INTO `qualif` VALUES(9, 'B.A.', NULL);
+INSERT INTO `qualif` VALUES(10, 'Mba', NULL);
 
 -- --------------------------------------------------------
 
@@ -275,10 +261,9 @@ CREATE TABLE IF NOT EXISTS `user_details` (
 -- Dumping data for table `user_details`
 --
 
-INSERT INTO `user_details` (`user_id`, `user_name`, `user_email`, `user_pass`, `user_right`, `active`, `del_on`) VALUES
-(2, 'Admin', 'test@era.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 1, '0000-00-00 00:00:00'),
-(3, 'Kapi Agrawal', 'kapil.agrawal947@gmail.com', '281f09155c96bf1277ed70fab0b043322f873f41', 0, 0, '2015-06-15 13:50:44'),
-(4, 'Surabhi Singh', 'surabhi.singh@erasmith.com', 'c9833ed8fe055d885f3715cd0f9d74fc4bc03a7d', 0, 1, '0000-00-00 00:00:00');
+INSERT INTO `user_details` VALUES(2, 'Admin', 'test@era.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 0, 1, '0000-00-00 00:00:00');
+INSERT INTO `user_details` VALUES(3, 'Kapi Agrawal', 'kapil.agrawal947@gmail.com', '281f09155c96bf1277ed70fab0b043322f873f41', 0, 0, '2015-06-15 13:50:44');
+INSERT INTO `user_details` VALUES(4, 'Surabhi Singh', 'surabhi.singh@erasmith.com', 'c9833ed8fe055d885f3715cd0f9d74fc4bc03a7d', 0, 1, '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -362,17 +347,17 @@ MODIFY `field_id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `client_details`
 --
 ALTER TABLE `client_details`
-MODIFY `client_id` bigint(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `client_id` bigint(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `contact_person_details`
 --
 ALTER TABLE `contact_person_details`
-MODIFY `cp_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `cp_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `job_opp`
 --
 ALTER TABLE `job_opp`
-MODIFY `job_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `job_id` bigint(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `job_owner_details`
 --

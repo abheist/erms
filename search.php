@@ -1,7 +1,8 @@
 <?php
 function search($search_term)
 {
-  $query= "select SHA(candid_id) as cid,name,added_by,contactno,ca_email,user_name from candidate_details inner join user_details on candidate_details.added_by=user_details.user_id";
+  $query= "select SHA(candid_id) as cid,name,added_by,contactno,ca_email,user_name from candidate_details inner join
+   user_details on candidate_details.added_by=user_details.user_id";
   $clean_search=str_replace(',',' ',$search_term);
   $search_words=explode(' ',$clean_search);
   $final_search_words=array();

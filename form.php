@@ -9,9 +9,11 @@
 		echo '<h2>Error in loading page. Redirecting....</h2>';
 		header('refresh:2;url=.');
 	}
+	//-------------------------------------------------------------------------------------------
 	$_SESSION['active']=false;
 	$form=true;
 	$error="";
+	//-------------------------------------------------------------------------------------------
 	if(isset($_POST['submit']))
 	{
 		$form=false;
@@ -21,10 +23,7 @@
 		$client_id=mysqli_real_escape_string($dbc, trim($_POST['client_id']));
 		$primary_contact=mysqli_real_escape_string($dbc, trim($_POST['primary_contact']));
 		$job_owner=mysqli_real_escape_string($dbc, trim($_POST['job_owner']));
-		$owner_name=mysqli_real_escape_string($dbc, trim($_POST['owner_name']));
-		$owner_phnno=mysqli_real_escape_string($dbc, trim($_POST['owner_phnno']));
-		$owner_email=mysqli_real_escape_string($dbc, trim($_POST['owner_email']));
-		$owner_desig=mysqli_real_escape_string($dbc, trim($_POST['owner_desig']));
+	//-------------------------------------------------------------------------------------------
 		if(empty($job_title) || !ctype_alpha(str_replace(' ', '', $job_title)) || $client_id<1 || empty($primary_contact))
 		{
 			$error="Complete Mandatory Fields";
@@ -36,37 +35,63 @@
 				$job_owner_id=$job_owner;
 			else
 			{
-				if(empty($owner_name) || empty($owner_desig) || empty($owner_phnno) || empty($owner_email))
+				if($job_owner==-1 && isset($_POST['owner_name']))
 				{
-					$error="Add Job Owner Details";
-					$form=true;
+					$owner_name=mysqli_real_escape_string($dbc, trim($_POST['owner_name']));
+					$owner_phnno=mysqli_real_escape_string($dbc, trim($_POST['owner_phnno']));
+					$owner_email=mysqli_real_escape_string($dbc, trim($_POST['owner_email']));
+					$owner_desig=mysqli_real_escape_string($dbc, trim($_POST['owner_desig']));
+					if(empty($owner_name) || empty($owner_desig) || empty($owner_phnno) || empty($owner_email))
+					{
+						$error="Add Job Owner Details";
+						$form=true;
+					}
+					else
+					{	
+						$check_query="select owner_email from job_owner_details";
+						$check_result=mysqli_query($dbc, $check_query) or die('Error');
+						while($check_row=mysqli_fetch_array($check_result,MYSQL_ASSOC))
+							array_push($oemails,$row['owner_email']);
+						if(in_array($owner_email, $oemails))
+						{	
+							$error="Job Owner Exist with same email address";
+							$form=true;
+						}
+						else
+						{
+							$own_query="insert into job_owner_details(owner_name,owner_phnno,owner_desig,client_id,owner_email) 
+										values('$owner_name','$owner_phnno','$owner_desig',$client_id,'$owner_email')";
+							$own_result=mysqli_query($dbc,$own_query);
+							if($own_result)
+							{
+								$own_query="select owner_id from job_owner_details where owner_email='$owner_email'";
+								$own_result=mysqli_query($dbc,$own_query) or die('Error 1');
+								if(mysqli_num_rows($own_result)==1)
+								{
+									$own_row=mysqli_fetch_array($own_result,MYSQL_ASSOC);
+									$job_owner_id=$own_row['owner_id'];
+								}
+								else
+									$sql_error=true;
+							}
+							else
+								$sql_error=true;
+						}
+					}
 				}
 				else
 				{
-					$own_query="insert into job_owner_details(owner_name,owner_phnno,owner_desig,client_id,owner_email) 
-							values('$owner_name','$owner_phnno','$owner_desig',$client_id,'$owner_email')";
-					$own_result=mysqli_query($dbc,$own_query);
-					if($own_result)
-					{
-						$own_query="select owner_id from job_owner_details where owner_email='$owner_email'";
-						$own_result=mysqli_query($dbc,$own_query);
-						if(mysqli_num_rows($result)==1)
-						{
-							$own_row=mysqli_fetch_array($result,MYSQL_ASSOC);
-							$job_owner_id=$own_row['owner_id'];
-						}
-						else
-							$sql_error=true;
-					}
-					else
-						$sql_error=true;
+					$form=true;
+					$error="Please enter job owner details";
 				}
 			}
-			$ins_query="insert into job_opp(job_title,client_id,job_owner,primary_contact,user_id,added_on) 
-						values('$job_title',$client_id,$job_owner_id,$primary_contact,$user_id,NOW())";
-			$ins_result=mysqli_query($dbc, $ins_query);
-			if($ins_result)
+			if(!$form)
 			{
+				$ins_query="insert into job_opp(job_title,client_id,job_owner,primary_contact,user_id,added_on) 
+							values('$job_title',$client_id,$job_owner_id,$primary_contact,$user_id,NOW())";
+				$ins_result=mysqli_query($dbc, $ins_query) or die($ins_query);
+				if($ins_result)
+				{
 					$job_id=mysqli_insert_id($dbc);
 					$up_query="update job_opp set ";
 					if(isset($_POST['job_location']))
@@ -114,7 +139,7 @@
 					{
 						$job_other=trim($_POST['job_other']);
 						$filename=$job_id.'.txt';
-						$path='desc/'.$filename;
+						$path='other/'.$filename;
 						$job_point=fopen($path,"w+") or die("Error in posting");
 						fputs($job_point,$job_other);
 						fclose($job_point);
@@ -134,16 +159,17 @@
 					}
 					else
 						$sql_error=true;
+				}
+				else
+					$sql_error=true;
+			}//form is false
+			if($sql_error)
+			{
+				$error= 'Error in posting job.';
+				$form=true;	
 			}
-			else
-				$sql_error=true;
-		}
-		if($sql_error)
-		{
-			echo $up_query.'<h2>Error in posting job. Redirecting....</h2>';
-			//header('refresh:2;url=.');	
-		}
-	}
+		}//else
+	}//form submitted
 	if($form)
 	{
 		$query1="select client_id,client_name from client_details";

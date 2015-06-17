@@ -39,7 +39,22 @@ if(isset($_GET['id']))
 				echo '<h6 id="canstatus">Current CTC (INR in Lacs): '.number_format($row['cur_ctc']).'</h6>';
 			}
 			echo '<h6 id="canstatus">Expected CTC (INR in Lacs): '.number_format($row['exp_ctc']).'</h6>';
-			echo '<h6 id="canstatus">Resume: </h6>';
+			if(!empty($row['resext']))
+			{
+				echo '<h6 id="canstatus">Resume: 
+						<form method="post" action="resumeviewer" target="_blank">
+							<input type="hidden" name="candid" value="'.$row['candid_id'].'"/>
+							<input type="hidden" name="file" value="'.$row['resext'].'"/>
+							<input type="submit" value="View Resume" name="submit"/>
+						</form>
+						<form method="post" action="download">
+							<input type="hidden" name="candid" value="'.$row['candid_id'].'"/>
+							<input type="hidden" name="file" value="'.$row['resext'].'"/>
+							<input type="hidden" name="candidate" value="'.$row['name'].'"/>
+							<input type="submit" value="Download Resume" name="submit"/>
+						</form>
+					</h6>';
+			}
 			$cid=$row['candid_id'];
 			$query="select qname from candid_qualif inner join qualif using(qid) where candid_id=$cid";
 			$result1=mysqli_query($dbc, $query) or die('Error');
